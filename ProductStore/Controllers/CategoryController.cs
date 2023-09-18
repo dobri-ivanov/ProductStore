@@ -34,10 +34,31 @@ namespace ProductStore.Controllers
 				return NotFound();
 			}
 
+			if (!ModelState.IsValid)
+			{
+				return View(obj);
+			}
+
 			_data.Categories.Add(obj);
 			_data.SaveChangesAsync();
 
 			return RedirectToAction("Index");
 		}
+
+		//[HttpGet]
+		//public IActionResult Edit(int? id)
+		//{
+		//	if (id == null || id == 0)
+		//	{
+		//		return NotFound();
+		//	}
+
+		//	Category obj = _data.Categories.Find(id);
+
+		//	if (obj == null)
+		//	{
+		//		return NotFound();
+		//	}
+		//}
 	}
 }
