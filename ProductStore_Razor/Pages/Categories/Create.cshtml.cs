@@ -11,7 +11,7 @@ namespace ProductStore_Razor.Pages.Categories
 		private readonly ProductStoreDbContext _data;
 
         [BindProperty]
-		public Category Category { get; set; }
+        public Category Category { get; set; } = null!;
 
         public CreateModel(ProductStoreDbContext data)
         {
@@ -23,6 +23,7 @@ namespace ProductStore_Razor.Pages.Categories
 
         public IActionResult OnPost()
         {
+            
             _data.Categories.Add(Category);
             _data.SaveChanges();
 

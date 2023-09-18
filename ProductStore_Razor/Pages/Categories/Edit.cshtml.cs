@@ -10,7 +10,7 @@ namespace ProductStore_Razor.Pages.Categories
 		private readonly ProductStoreDbContext _data;
 
 		[BindProperty]
-		public Category Category { get; set; }
+		public Category? Category { get; set; }
 
 		public EditModel(ProductStoreDbContext data)
 		{
