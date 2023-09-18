@@ -45,20 +45,36 @@ namespace ProductStore.Controllers
 			return RedirectToAction("Index");
 		}
 
-		//[HttpGet]
-		//public IActionResult Edit(int? id)
-		//{
-		//	if (id == null || id == 0)
-		//	{
-		//		return NotFound();
-		//	}
+		[HttpGet]
+		public IActionResult Edit(int? id)
+		{
+			if (id == null || id == 0)
+			{
+				return NotFound();
+			}
 
-		//	Category obj = _data.Categories.Find(id);
+			Category obj = _data.Categories.Find(id);
 
-		//	if (obj == null)
-		//	{
-		//		return NotFound();
-		//	}
-		//}
+			if (obj == null)
+			{
+				return NotFound();
+			}
+
+			return View(obj);
+		}
+
+		[HttpPost]
+		public IActionResult Edit(Category obj)
+		{
+			if (!ModelState.IsValid)
+			{
+				return View(obj);
+			}
+
+			_data.Categories.Update(obj);
+			_data.SaveChanges();
+
+			return RedirectToAction("Index");
+		}
 	}
 }
