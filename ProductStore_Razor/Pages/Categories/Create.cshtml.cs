@@ -22,7 +22,6 @@ namespace ProductStore_Razor.Pages.Categories
         }
 
         public IActionResult OnPost()
-
         {
             
             _data.Categories.Add(Category);
