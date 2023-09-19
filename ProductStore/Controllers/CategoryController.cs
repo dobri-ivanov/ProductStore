@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProductStore.Data;
+using ProductStore.DataAcess.Data;
 using ProductStore.Models;
 
 namespace ProductStore.Controllers

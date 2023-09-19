@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using ProductStore.Data;
+using ProductStore.DataAcess.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 

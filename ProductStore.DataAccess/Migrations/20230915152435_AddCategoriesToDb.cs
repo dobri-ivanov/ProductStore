@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ProductStore.Migrations
+namespace ProductStore.DataAcess.Migrations
 {
     /// <inheritdoc />
     public partial class AddCategoriesToDb : Migration

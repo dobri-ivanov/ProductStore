@@ -1,4 +1,4 @@
-﻿namespace ProductStore.Data
+﻿namespace ProductStore.DataAcess.Data
 {
     using Microsoft.EntityFrameworkCore;
     
