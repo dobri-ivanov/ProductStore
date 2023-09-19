@@ -478,8 +478,8 @@ bg-success {
 
 
     .btn-outline-success:disabled, .btn-outline-success.disabled {
-        c  background-color: transparent;olor: #4b7147;
-      
+        color: #4b7147;
+        background-color: transparent;
     }
 
 
