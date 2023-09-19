@@ -2,7 +2,7 @@
 using ProductStore.Models;
 using System.Diagnostics;
 
-namespace ProductStore.Controllers
+namespace ProductStore.Areas.Customer.Controllers
 {
     public class HomeController : Controller
     {
