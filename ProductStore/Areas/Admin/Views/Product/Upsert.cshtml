@@ -34,8 +34,15 @@
 				</div>
 			</div>
 			<div class="col-2">
-				<img src="@Model.Product.ImageUrl"
-					 style=" width: 100%; border-radius: 5px; border: 1px solid #bbb9b9" />
+				@if (Model.Product.ImageUrl != null)
+				{
+					<img src="@Model.Product.ImageUrl"
+						 style=" width: 100%; border-radius: 5px; border: 1px solid #bbb9b9" />
+				}
+				else
+				{
+					<img src="https://placehold.co/500x600" width="100%" class="rounded" />
+				}
 			</div>
 			<div class="py-2 col-12">
 				<label asp-for="Product.Description" class="ms-2"></label>

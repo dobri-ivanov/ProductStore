@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductStore.DataAcess.Repository;
+using ProductStore.DataAcess.Repository.Interfaces;
 using ProductStore.Models;
 using System.Diagnostics;
 
@@ -7,15 +9,23 @@ namespace ProductStore.Areas.Customer.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
         {
             _logger = logger;
+            _unitOfWork = unitOfWork;
         }
 
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Product> products = _unitOfWork.Product.GetAll(includeProperties: "Category");
+            return View(products);
+        }
+        public IActionResult Details(int productId)
+        {
+            Product product = _unitOfWork.Product.Get(p => p.Id == productId, includeProperties: "Category");
+            return View(product);
         }
 
         public IActionResult Privacy()

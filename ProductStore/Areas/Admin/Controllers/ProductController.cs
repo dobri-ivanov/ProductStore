@@ -63,10 +63,9 @@ namespace ProductStore.Areas.Admin.Controllers
 					string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
 					string productPath = Path.Combine(wwwRootPath, @"images\product");
 
-					if (String.IsNullOrEmpty(obj.Product.ImageUrl))
+					if (!String.IsNullOrEmpty(obj.Product.ImageUrl))
 					{
-						var oldImagePath = 
-							Path.Combine(wwwRootPath, obj.Product.ImageUrl.TrimStart('\\'));
+						var oldImagePath = Path.Combine(wwwRootPath, obj.Product.ImageUrl.TrimStart('\\'));
 
 						if (System.IO.File.Exists(oldImagePath))
 						{
