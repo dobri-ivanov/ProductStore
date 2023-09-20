@@ -21,9 +21,7 @@ namespace ProductStore.Areas.Admin.Controllers
 		[HttpGet]
 		public IActionResult Index()
 		{
-			List<Product> categories = _unitOfWork.Product.GetAll(includeProperties:"Category").ToList();
-
-			return View(categories);
+			return View();
 		}
 
 		[HttpGet]
@@ -108,39 +106,39 @@ namespace ProductStore.Areas.Admin.Controllers
 			return View(obj);
 
 		}
-
+		#region API CALLS
 		[HttpGet]
+		public IActionResult GetAll() 
+		{
+			List<Product> categories = _unitOfWork.Product.GetAll(includeProperties: "Category").ToList();
+			return Json(new { data = categories });
+		}
+
 		public IActionResult Delete(int? id)
 		{
-			if (id == null || id == 0)
+			var product = _unitOfWork.Product.Get(p => p.Id == id);
+
+			if (product == null)
 			{
-				return NotFound();
+				return Json(new { success = false, message = "Error while deleting" });
 			}
 
-			Product? obj = _unitOfWork.Product.Get(obj => obj.Id == id);
+			var oldImageUrl = 
+				Path.Combine(_webHostEnvironment.WebRootPath,
+				product.ImageUrl.TrimStart('\\'));
 
-			if (obj == null)
+			if (System.IO.File.Exists(oldImageUrl))
 			{
-				return NotFound();
+				System.IO.File.Delete(oldImageUrl);
 			}
 
-			return View(obj);
-		}
-
-		[HttpPost, ActionName("Delete")]
-		public IActionResult DeletePOST(int? id)
-		{
-			Product? obj = _unitOfWork.Product.Get(obj => obj.Id == id);
-			if (obj == null)
-			{
-				return NotFound();
-			}
-
-			_unitOfWork.Product.Remove(obj);
+			_unitOfWork.Product.Remove(product); 
 			_unitOfWork.Save();
 
-			TempData["success"] = "Product is successfully deleted!";
-			return RedirectToAction("Index");
+			return Json(new { success = true, message = "Deleted Successful" });
 		}
+
+		#endregion
+
 	}
 }
