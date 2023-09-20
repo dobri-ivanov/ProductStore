@@ -8,7 +8,8 @@ namespace ProductStore.DataAcess.Repository.Interfaces
 {
 	public interface IUnitOfWork
 	{
-		ICategoryRepository CategoryRepository { get; }
+		ICategoryRepository Category { get; }
+		IProductRepository Product { get; }
 		void Save();
 	}
 }

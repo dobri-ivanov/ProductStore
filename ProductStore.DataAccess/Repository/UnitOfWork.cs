@@ -11,12 +11,14 @@ namespace ProductStore.DataAcess.Repository
 	public class UnitOfWork : IUnitOfWork
 	{
 		private ProductStoreDbContext _db;
-		public ICategoryRepository CategoryRepository {  get; private set; }
+		public ICategoryRepository Category {  get; private set; }
+		public IProductRepository Product {  get; private set; }
 
         public UnitOfWork(ProductStoreDbContext db)
         {
             _db = db;
-			CategoryRepository = new CategoryRepository(db);
+			Category= new CategoryRepository(db);
+			Product = new ProductRepository(db);
         }
         public void Save()
 		{

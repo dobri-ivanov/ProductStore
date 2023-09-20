@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ProductStore.DataAcess.Data;
 
@@ -10,9 +11,11 @@ using ProductStore.DataAcess.Data;
 namespace ProductStore.DataAcess.Migrations
 {
     [DbContext(typeof(ProductStoreDbContext))]
-    partial class ProductStoreDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230920090440_AddImageUrlToProduct")]
+    partial class AddImageUrlToProduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

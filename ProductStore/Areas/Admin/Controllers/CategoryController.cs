@@ -17,7 +17,7 @@ namespace ProductStore.Areas.Admin.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            List<Category> categories = _unitOfWork.CategoryRepository.GetAll().OrderBy(c => c.DisplayOrder).ToList();
+            List<Category> categories = _unitOfWork.Category.GetAll().OrderBy(c => c.DisplayOrder).ToList();
             return View(categories);
         }
 
@@ -40,7 +40,7 @@ namespace ProductStore.Areas.Admin.Controllers
                 return View(obj);
             }
 
-            _unitOfWork.CategoryRepository.Add(obj);
+            _unitOfWork.Category.Add(obj);
             _unitOfWork.Save();
 
             TempData["success"] = "A new category is successfully created!";
@@ -55,7 +55,7 @@ namespace ProductStore.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            Category? obj = _unitOfWork.CategoryRepository.Get(obj => obj.Id == id);
+            Category? obj = _unitOfWork.Category.Get(obj => obj.Id == id);
 
             if (obj == null)
             {
@@ -78,7 +78,7 @@ namespace ProductStore.Areas.Admin.Controllers
                 return View(obj);
             }
 
-            _unitOfWork.CategoryRepository.Update(obj);
+            _unitOfWork.Category.Update(obj);
             _unitOfWork.Save();
 
             TempData["success"] = "Category is successfully updated!";
@@ -93,7 +93,7 @@ namespace ProductStore.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            Category? obj = _unitOfWork.CategoryRepository.Get(obj => obj.Id == id);
+            Category? obj = _unitOfWork.Category.Get(obj => obj.Id == id);
 
             if (obj == null)
             {
@@ -111,7 +111,7 @@ namespace ProductStore.Areas.Admin.Controllers
                 return NotFound();
             }
 
-            _unitOfWork.CategoryRepository.Remove(obj);
+            _unitOfWork.Category.Remove(obj);
             _unitOfWork.Save();
 
             TempData["success"] = "Category is successfully deleted!";

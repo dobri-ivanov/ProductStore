@@ -1,13 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Migrations;
 using ProductStore.DataAcess.Data;
 using ProductStore.DataAcess.Repository.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ProductStore.DataAcess.Repository
 {
@@ -19,22 +13,40 @@ namespace ProductStore.DataAcess.Repository
 		{
 			this._db = db;
 			this.dbSet = _db.Set<T>();
+			_db.Products.Include(p => p.Category);
 		}
 		public void Add(T entity)
 		{
 			dbSet.Add(entity);
 		}
 
-		public T Get(Expression<Func<T, bool>> filter)
+		public T Get(Expression<Func<T, bool>> filter, string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
-
-			return query.Where(filter).FirstOrDefault();
+			query = query.Where(filter);
+			if (!string.IsNullOrEmpty(includeProperties))
+			{
+				foreach (var prop in includeProperties
+					.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries))
+				{
+					query = query.Include(prop);
+				}
+			}
+			return query.FirstOrDefault();
 		}
 
-		public IEnumerable<T> GetAll()
+		public IEnumerable<T> GetAll(string? includeProperties = null)
 		{
 			IQueryable<T> query = dbSet;
+			if (!string.IsNullOrEmpty(includeProperties))
+			{
+				foreach (var prop in includeProperties
+					.Split(new char[] {',' }, StringSplitOptions.RemoveEmptyEntries))
+				{
+					query = query.Include(prop);
+				}
+			}
+
 			return query.ToList();
 		}
 
