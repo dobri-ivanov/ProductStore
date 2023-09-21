@@ -3,9 +3,9 @@ using ProductStore_Razor.Models;
 
 namespace ProductStore_Razor.Data
 {
-	public class ProductStoreDbContext : DbContext
+	public class ApplicationDbContext : DbContext
 	{
-		public ProductStoreDbContext(DbContextOptions options) : base(options)
+		public ApplicationDbContext(DbContextOptions options) : base(options)
 		{
 
 		}

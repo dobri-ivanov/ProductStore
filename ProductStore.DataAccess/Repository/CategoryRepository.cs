@@ -6,8 +6,8 @@ namespace ProductStore.DataAcess.Repository
 {
 	public class CategoryRepository : Repository<Category>, ICategoryRepository
 	{
-		private readonly ProductStoreDbContext _db;
-        public CategoryRepository(ProductStoreDbContext db) : base(db)
+		private readonly ApplicationDbContext _db;
+        public CategoryRepository(ApplicationDbContext db) : base(db)
         {
             _db = db;
         }

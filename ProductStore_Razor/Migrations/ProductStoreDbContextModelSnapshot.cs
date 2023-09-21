@@ -9,8 +9,8 @@ using ProductStore_Razor.Data;
 
 namespace ProductStore_Razor.Migrations
 {
-    [DbContext(typeof(ProductStoreDbContext))]
-    partial class ProductStoreDbContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(ApplicationDbContext))]
+    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

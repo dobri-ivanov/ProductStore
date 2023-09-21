@@ -12,8 +12,8 @@ namespace ProductStore.DataAcess.Repository
 {
 	public class ProductRepository : Repository<Product>, IProductRepository
 	{
-		private ProductStoreDbContext _db;
-		public ProductRepository(ProductStoreDbContext db) : base(db)
+		private ApplicationDbContext _db;
+		public ProductRepository(ApplicationDbContext db) : base(db)
 		{
 			_db = db;
 		}

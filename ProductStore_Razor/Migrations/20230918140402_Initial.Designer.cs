@@ -10,7 +10,7 @@ using ProductStore_Razor.Data;
 
 namespace ProductStore_Razor.Migrations
 {
-    [DbContext(typeof(ProductStoreDbContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20230918140402_Initial")]
     partial class Initial
     {

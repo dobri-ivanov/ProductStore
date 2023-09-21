@@ -7,12 +7,12 @@ namespace ProductStore_Razor.Pages.Categories
 {
     public class EditModel : PageModel
     {
-		private readonly ProductStoreDbContext _data;
+		private readonly ApplicationDbContext _data;
 
 		[BindProperty]
 		public Category? Category { get; set; }
 
-		public EditModel(ProductStoreDbContext data)
+		public EditModel(ApplicationDbContext data)
 		{
 			_data = data;
 		}

@@ -7,11 +7,11 @@ namespace ProductStore_Razor.Pages.Categories
 {
     public class IndexModel : PageModel
     {
-        private readonly ProductStoreDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
         public List<Category> Categories { get; set; }
 
-        public IndexModel(ProductStoreDbContext dbContext)
+        public IndexModel(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

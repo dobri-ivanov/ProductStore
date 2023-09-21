@@ -8,12 +8,12 @@ namespace ProductStore_Razor.Pages.Categories
     
     public class CreateModel : PageModel
     {
-		private readonly ProductStoreDbContext _data;
+		private readonly ApplicationDbContext _data;
 
         [BindProperty]
         public Category Category { get; set; } = null!;
 
-        public CreateModel(ProductStoreDbContext data)
+        public CreateModel(ApplicationDbContext data)
         {
             _data = data;
         }

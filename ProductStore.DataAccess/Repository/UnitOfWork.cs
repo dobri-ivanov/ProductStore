@@ -10,11 +10,11 @@ namespace ProductStore.DataAcess.Repository
 {
 	public class UnitOfWork : IUnitOfWork
 	{
-		private ProductStoreDbContext _db;
+		private ApplicationDbContext _db;
 		public ICategoryRepository Category {  get; private set; }
 		public IProductRepository Product {  get; private set; }
 
-        public UnitOfWork(ProductStoreDbContext db)
+        public UnitOfWork(ApplicationDbContext db)
         {
             _db = db;
 			Category= new CategoryRepository(db);

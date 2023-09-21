@@ -7,9 +7,9 @@ namespace ProductStore.DataAcess.Repository
 {
 	public class Repository<T> : IRepository<T> where T : class
 	{
-		private readonly ProductStoreDbContext _db;
+		private readonly ApplicationDbContext _db;
 		internal DbSet<T> dbSet;
-		public Repository(ProductStoreDbContext db)
+		public Repository(ApplicationDbContext db)
 		{
 			this._db = db;
 			this.dbSet = _db.Set<T>();
