@@ -14,6 +14,7 @@
 		}
 		public DbSet<Category> Categories { get; set; }
 		public DbSet<Product> Products { get; set; }
+		public DbSet<Company> Companies { get; set; }
 		public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
 		protected override void OnModelCreating(ModelBuilder builder)
@@ -21,9 +22,42 @@
 			base.OnModelCreating(builder);
 
 			builder.Entity<Category>().HasData(
-				new { Id = 1, Name = "FirstCategory", DisplayOrder = 1 },
-				new { Id = 2, Name = "SecondCategory", DisplayOrder = 2 },
-				new { Id = 3, Name = "ThirdCategory", DisplayOrder = 3 }
+				new Category { Id = 1, Name = "FirstCategory", DisplayOrder = 1 },
+				new Category { Id = 2, Name = "SecondCategory", DisplayOrder = 2 },
+				new Category { Id = 3, Name = "ThirdCategory", DisplayOrder = 3 }
+			);
+
+			builder.Entity<Company>().HasData(
+				new Company 
+				{ 
+					Id = 1, 
+					Name = "Tech Solution", 
+					StreetAddress = "123",
+					City = "City",
+					PostalCode = "1234",
+					State = "None",
+					PhoneNumber = "05456115145"
+				},
+				new Company
+				{
+					Id = 2,
+					Name = "Vivid Books",
+					StreetAddress = "123",
+					City = "City",
+					PostalCode = "1234",
+					State = "None",
+					PhoneNumber = "05456115145"
+				},
+				new Company
+				{
+					Id = 3,
+					Name = "Rick Solutions",
+					StreetAddress = "123",
+					City = "City",
+					PostalCode = "1234",
+					State = "None",
+					PhoneNumber = "05456115145"
+				}
 			);
 
 			builder.Entity<Product>().HasData(
