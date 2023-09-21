@@ -1,11 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProductStore.DataAcess.Data;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProductStore.DataAcess.Repository.Interfaces;
 using ProductStore.Models;
+using ProductStore.Utility;
 
 namespace ProductStore.Areas.Admin.Controllers
 {
-    [Area("Admin")]
+	[Area("Admin")]
+    [Authorize(Roles = SD.Role_Admin)]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
