@@ -11,6 +11,7 @@ namespace ProductStore.DataAcess.Repository.Interfaces
 		ICategoryRepository Category { get; }
 		IProductRepository Product { get; }
 		ICompanyRepository Company { get; }
+		IShoppingCartRepository ShoppingCart { get; }
 		void Save();
 	}
 }
