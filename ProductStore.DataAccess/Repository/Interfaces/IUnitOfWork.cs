@@ -12,6 +12,9 @@ namespace ProductStore.DataAcess.Repository.Interfaces
 		IProductRepository Product { get; }
 		ICompanyRepository Company { get; }
 		IShoppingCartRepository ShoppingCart { get; }
+		IOrderHeaderRepository OrderHeader { get; }
+		IOrderDetailRepository OrderDetail { get; }
+		IApplicationUserRepository ApplicationUser { get; }
 		void Save();
 	}
 }
