@@ -1,4 +1,7 @@
 ﻿@using ProductStore
+@using ProductStore.DataAcess.Repository.Interfaces;
 @using ProductStore.Models
 @using ProductStore.Utility
+
+@inject IUnitOfWork _unitOfWork
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
